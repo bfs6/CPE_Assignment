@@ -6,10 +6,8 @@ library(Hmisc)
 
 
 ####Read in Data####
-pedestrian_stops <- fread("data-raw/pedestrian_stops.csv", sep = ",", header = TRUE)
 police_stop_data <- fread("data-raw/police_stop_data.csv", sep = ",", header = TRUE)
 police_use_of_force <- fread("data-raw/police_use_of_force.csv", sep = ",", header = TRUE)
-neighborhood_crime_stats <- fread("data-raw/neighborhood_crime_stats.csv", sep = ",", header = TRUE)
 
 
 ####Part 1####
@@ -109,7 +107,7 @@ metric_cols <- c("percentage_pedestrian_stops", "percentage_vehicle_stops",
                  "percentage_vehicle_searches", "percentage_pedestrian_searches")
 stops_by_race_DT <- setDT(stops_by_race)[, paste0("diff_", metric_cols) := get("population_percentage") - .SD, .SDcols = metric_cols]
 stops_by_race_DT <- stops_by_race_DT[, "mean_difference_percentage" := rowMeans(.SD), .SDcols = paste0("diff_", metric_cols)]
-
+  ##Subtract Stops and Searches by Population Percentage and Calculate Mean by Race
 
 
 
