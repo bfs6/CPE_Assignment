@@ -58,6 +58,6 @@ crime_plot <- ggplot(aggregated_neighborhood_crime_stats,
   xlab("UCR Description") + ylab("Percentage of Total Incidents") + labs(fill = "Neighborhood") +
   ggtitle("Minnesota Neighborhood Crime Statistics") + coord_cartesian(ylim = c(0, yMax)) +
   theme_solarized()
-crime_plot
+ggsave(filename = "plots/CPE_Data_Visualization.png", crime_plot, dpi = 300, width = 15, height = 10)
 
 
