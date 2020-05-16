@@ -22,7 +22,7 @@ pedestrian_stops_clean <-
 ##Build Model Matrix
 model_data <- 
   pedestrian_stops_clean %>%
-  modelr::model_matrix( ~ SUBJECT_RACE + SUBJECT_GENDER + SEARCH_CONDUCTED) %>%
+  modelr::model_matrix( ~ SUBJECT_RACE * SUBJECT_GENDER + SEARCH_CONDUCTED) %>%
   as.data.frame() %>% 
   select(-c("(Intercept)"))
 names(model_data) <- gsub("SEARCH_CONDUCTEDYES", "SEARCH_CONDUCTED", names(model_data))

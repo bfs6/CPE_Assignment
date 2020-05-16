@@ -1,7 +1,6 @@
 ####Read in Libraries####
 library(data.table)
 library(tidyverse) 
-library(dplyr)
 library(Hmisc)
 
 
@@ -11,6 +10,7 @@ police_use_of_force <- fread("data-raw/police_use_of_force.csv", sep = ",", head
 
 
 ####Part 1####
+##Tidy Data
 police_use_of_force_tidy <-
   police_use_of_force %>% 
   select(CaseNumber, SubjectRoleNumber, ForceType) %>% 
